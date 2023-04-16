@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
-import web.repositories.UesrRepository;
+import web.repositories.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,10 +12,10 @@ import java.util.Optional;
 @Service
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
-    private final UesrRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserServiceImpl(UesrRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

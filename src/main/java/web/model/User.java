@@ -14,7 +14,6 @@ public class User {
     @Column
     private int age;
     @Column
-    @Email
     private String email;
 
     public User() {
