@@ -1,44 +1,17 @@
 package web.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
-import web.repositories.UesrRepository;
 
 import java.util.List;
 
-@Service
-@Transactional(readOnly = true)
-public class UserServiceImpl {
-    private final UesrRepository userRepository;
+public interface UserService {
+    List<User> findAll();
 
-    @Autowired
-    public UserService(UesrRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    void save(User user);
 
-    public UserServiceImpl(UesrRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    void update(int id, User updateUser);
 
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
+    void delete(int id);
 
-    @Transactional
-    public void save(User user) {
-        userRepository.save(user);
-    }
-
-    @Transactional
-    public void update(int id, User updatedUser) {
-        updatedUser.setId(id);
-        userRepository.save(updatedUser);
-    }
-
-    @Transactional
-    public void delete(int id) {
-        userRepository.deleteById(id);
-    }
+    User findOne(int id);
 }

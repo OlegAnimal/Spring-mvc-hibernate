@@ -1,6 +1,7 @@
 package web.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "users")
@@ -11,17 +12,22 @@ public class User {
     @Column
     private String name;
     @Column
-    private String surename;
-    @Column
     private int age;
+    @Column
+    @Email
+    private String email;
 
     public User() {
     }
 
-    public User(int id, String name, String surename, int age) {
-        this.id = id;
+    public User(String name, String email, int age) {
         this.name = name;
-        this.surename = surename;
+        this.email = email;
+        this.age = age;
+    }
+
+    public User(String name, int age) {
+        this.name = name;
         this.age = age;
     }
 
@@ -41,12 +47,12 @@ public class User {
         this.name = name;
     }
 
-    public String getSurename() {
-        return surename;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSurename(String surename) {
-        this.surename = surename;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getAge() {
@@ -62,7 +68,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", surename='" + surename + '\'' +
+                ", email='" + email + '\'' +
                 ", age=" + age +
                 '}';
     }

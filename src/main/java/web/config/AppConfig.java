@@ -94,8 +94,8 @@ public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         return transactionManager;
     }
 // не понятно пока, зачем это нужно
-//    @Bean
-//    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
-//        return new PersistenceExceptionTranslationPostProcessor();
-//    }
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
 }
